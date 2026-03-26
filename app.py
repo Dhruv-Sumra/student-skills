@@ -134,26 +134,31 @@ html, body, [class*="css"] {
    SIDEBAR — FIXED
    ════════════════════════════════════════════════════ */
 
-/* Main sidebar container */
+/* Sidebar base */
 [data-testid="stSidebar"] {
     background: var(--navy) !important;
     border-right: 6px solid var(--gold) !important;
-    min-width: 280px !important;
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
 }
+
 [data-testid="stSidebar"] > div {
     background: var(--navy) !important;
 }
 
-/* All text inside sidebar */
-[data-testid="stSidebar"] * {
+/* Style only normal text, not every element */
+[data-testid="stSidebar"] p,
+[data-testid="stSidebar"] label,
+[data-testid="stSidebar"] h1,
+[data-testid="stSidebar"] h2,
+[data-testid="stSidebar"] h3,
+[data-testid="stSidebar"] h4,
+[data-testid="stSidebar"] h5,
+[data-testid="stSidebar"] h6,
+[data-testid="stSidebar"] .stMarkdown {
     color: #e8e2d4 !important;
     font-family: "Times New Roman", "Georgia", Times, serif !important;
 }
 
-/* Sidebar headings */
+/* Headings */
 [data-testid="stSidebar"] h2,
 [data-testid="stSidebar"] h3 {
     font-size: 0.75rem !important;
@@ -165,14 +170,7 @@ html, body, [class*="css"] {
     margin-bottom: 0.9rem !important;
 }
 
-/* Sidebar markdown text */
-[data-testid="stSidebar"] p,
-[data-testid="stSidebar"] span,
-[data-testid="stSidebar"] label {
-    color: #e8e2d4 !important;
-}
-
-/* Sidebar divider */
+/* Divider */
 [data-testid="stSidebar"] hr {
     border-color: #3a3020 !important;
 }
@@ -184,72 +182,47 @@ html, body, [class*="css"] {
     color: #e8e2d4 !important;
 }
 
-/* Radio option hover */
+/* Radio hover */
 [data-testid="stSidebar"] [data-testid="stRadio"] div label {
     padding: 0.5rem 0.8rem !important;
     border-radius: 0 !important;
     transition: all 0.2s ease !important;
 }
+
 [data-testid="stSidebar"] [data-testid="stRadio"] div label:hover {
     background: rgba(201, 132, 26, 0.15) !important;
     border-left: 3px solid var(--gold) !important;
 }
 
-/* ── Sidebar COLLAPSE button (the ❮ arrow on the sidebar edge) ── */
-/* This targets the button that appears ON the sidebar to collapse it */
-[data-testid="stSidebar"] [data-testid="stBaseButton-header"],
-[data-testid="stSidebar"] button[data-testid="stBaseButton-header"] {
-    background: rgba(201, 132, 26, 0.2) !important;
-    border: 1px solid var(--gold) !important;
-    border-radius: 50% !important;
-    color: var(--gold-lt) !important;
-}
-[data-testid="stSidebar"] [data-testid="stBaseButton-header"]:hover,
-[data-testid="stSidebar"] button[data-testid="stBaseButton-header"]:hover {
-    background: var(--gold) !important;
-}
-[data-testid="stSidebar"] [data-testid="stBaseButton-header"] svg,
-[data-testid="stSidebar"] button[data-testid="stBaseButton-header"] svg {
-    fill: var(--gold-lt) !important;
-    stroke: var(--gold-lt) !important;
+/* Sidebar collapse button - white arrow when sidebar is open */
+button[kind="header"] {
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
-/* ── EXPAND button (the ▶ arrow shown when sidebar is collapsed) ── */
-[data-testid="stBaseButton-headerNoPadding"],
-button[data-testid="stBaseButton-headerNoPadding"] {
-    background: var(--navy) !important;
-    border: 2px solid var(--gold) !important;
-    border-radius: 0 !important;
-    color: var(--gold-lt) !important;
-    width: 2rem !important;
-    height: 2.5rem !important;
-}
-[data-testid="stBaseButton-headerNoPadding"]:hover,
-button[data-testid="stBaseButton-headerNoPadding"]:hover {
-    background: var(--gold) !important;
-    border-color: var(--gold-lt) !important;
-}
-[data-testid="stBaseButton-headerNoPadding"] svg,
-button[data-testid="stBaseButton-headerNoPadding"] svg {
-    fill: var(--gold-lt) !important;
-    stroke: var(--gold-lt) !important;
-    color: var(--gold-lt) !important;
+button[kind="header"] svg {
+    fill: white !important;
+    stroke: white !important;
+    color: white !important;
 }
 
-/* Older Streamlit versions use collapsedControl */
+/* Sidebar expand button - visible when sidebar is collapsed */
 [data-testid="collapsedControl"] {
-    background: var(--navy) !important;
-    border: 2px solid var(--gold) !important;
-    border-radius: 0 !important;
-    color: var(--gold-lt) !important;
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    z-index: 9999 !important;
 }
-[data-testid="collapsedControl"]:hover {
-    background: var(--gold) !important;
+
+button[kind="headerNoPadding"],
+[data-testid="baseButton-headerNoPadding"] {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    z-index: 9999 !important;
 }
-[data-testid="collapsedControl"] svg {
-    fill: var(--gold-lt) !important;
-    stroke: var(--gold-lt) !important;
-}
+
 
 /* ── Sidebar model badge ── */
 .model-badge {
@@ -347,7 +320,7 @@ button[data-testid="stBaseButton-headerNoPadding"] svg {
 
 /* ── Buttons ── */
 .stButton button[kind="primary"] {
-    background: var(--navy) !important;
+    background: var(--yellow) !important;
     color: #ffffff !important;
     border: 2px solid var(--gold) !important;
     border-radius: 0 !important;
@@ -377,7 +350,7 @@ button[data-testid="stBaseButton-headerNoPadding"] svg {
     color: var(--ink);
     margin: 0.9rem 0;
 }
-.callout b, .callout strong { font-style: normal; color: var(--navy); }
+.callout b, .callout strong { font-style: normal; color: var(--yellow); }
 
 /* ── Gold rule ── */
 .gold-rule {
